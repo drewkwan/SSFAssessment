@@ -22,7 +22,7 @@ public class News {
     //needs a save method later
     private static final Logger logger = LoggerFactory.getLogger(News.class);
     //private String lang = "EN";
-    private int id;
+    private String id;
     private String publishDate;
     private String url;
     private String imageurl;
@@ -32,10 +32,10 @@ public class News {
 
 
     
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getPublishDate() {
@@ -76,7 +76,7 @@ public class News {
     }
 
 
-    public static ArrayList<Object> lsOfNews(String json)  {
+    public static ArrayList<News> lsOfNews(String json)  {
         //logger.info("news create Json " + json); -> receives json file correctly
         InputStream is = new ByteArrayInputStream(json.getBytes());
         try (JsonReader r = Json.createReader(is);) {
@@ -94,19 +94,33 @@ public class News {
 
             
 
-             ArrayList<Object> newsList = new ArrayList();
-             if(data!= null) {
-                 for(int i=0; i<data.size(); i++) {
-                     newsList.add(data.getJsonObject(i));
-                 }
-             }
-            logger.info(newsList.get(0).toString());
+            ArrayList<News> newsListFromArray = new ArrayList<>();
+            for (JsonValue value:data) {
+                JsonObject newsList = value.asJsonObject();
+                News news = News.createNews(newsList);
+                newsListFromArray.add(news);
+                logger.info("the new list!!! >>>>>> " + newsListFromArray.get(0).toString());
+            }
 
-            return newsList;
+            return newsListFromArray;
         }
 
         //
 
+    }
+
+    private static News createNews(JsonObject o) {
+        News news = new News();
+        news.setBody(o.get("body").toString());
+        news.setId(o.get("id").toString());
+        news.setTitle(o.get("title").toString());
+        news.setPublishDate(o.get("published_on").toString());
+        news.setImageurl(o.get("imageurl").toString());
+        news.setCategories(o.get("categories").toString());
+        news.setTags(o.get("tags").toString());
+        news.setUrl(o.get("url").toString());
+
+        return news;
     }
 
     

@@ -30,7 +30,7 @@ public class NewsController {
     }
 
     private void newsList(Model model) {
-        ArrayList<Object> lsOfNews = newsSvc.getArticles();
+        ArrayList<News> lsOfNews = newsSvc.getArticles();
         model.addAttribute("newsList", lsOfNews);
         
     }

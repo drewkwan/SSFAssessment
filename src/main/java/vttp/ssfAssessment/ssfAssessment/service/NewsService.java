@@ -29,7 +29,7 @@ public class NewsService {
     public static final String NEWS_LS_URL = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
 
     
-    public ArrayList<Object> getArticles() {
+    public ArrayList<News> getArticles() {
         //Url adds the language and the api key.
         String newsListUrl = UriComponentsBuilder.fromUriString(NEWS_LS_URL)
                             .queryParam("api_key", apiKey)
@@ -39,7 +39,7 @@ public class NewsService {
         //rest template takes the Json data
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> resp = template.getForEntity(newsListUrl, String.class);
-        ArrayList<Object> lsOfNews = News.lsOfNews(resp.getBody());
+        ArrayList<News> lsOfNews = News.lsOfNews(resp.getBody());
         return lsOfNews;
 
 
