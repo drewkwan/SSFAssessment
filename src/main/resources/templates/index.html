@@ -8,8 +8,19 @@
 </head>
 <body>
     <h1>Crypto News of the Day</h1>
-    <ul th:each="news : ${newsList}">
-    <li th:value = "${news.id}"></li>
+    <form 
+        action="#"
+        th:action="@{/news}"
+        th:object="${news}"
+        method="post"
+        >
+    <label>Select your articles</label>
+    <type="text" th:each="news : ${newsList}">
+    <li th:value = "${news}"></li>
     </ul>
+    <input type="checkbox">
+    </form>
+    <br>
+    <input type="submit" value="Save">
 </body>
 </html>

@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import vttp.ssfAssessment.ssfAssessment.model.News;
 import vttp.ssfAssessment.ssfAssessment.service.NewsService;
@@ -29,10 +30,18 @@ public class NewsController {
         return "index";
     }
 
+
     private void newsList(Model model) {
         ArrayList<News> lsOfNews = newsSvc.getArticles();
         model.addAttribute("newsList", lsOfNews);
         
+    }
+
+    @PostMapping("/news")
+    public String saveArticles(@ModelAttribute News news, Model model) {
+        logger.info("article id >>>>>> " + news.getId());
+        model.addAttribute("news", news);
+        return "news";
     }
     
 }
