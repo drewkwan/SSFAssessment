@@ -29,4 +29,10 @@ Json Data (1 article example)
                 "lang": "EN",
                 "img": "https://images.cryptocompare.com/news/default/bitcoincom.png"
             }
-        },
+        }
+        ```
+        update app.properties for redis host and port
+        ```
+        use export REDIS_PASSWORD="" to set redis password 
+        ```
+        use export  CRYPTOCOMPARE_API="" to set apiKey
