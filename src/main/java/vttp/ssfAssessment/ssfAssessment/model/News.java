@@ -107,6 +107,7 @@ public class News {
                 News news = News.createNews(newsList);
                 newsListFromArray.add(news);
                 logger.info("the new list!!! >>>>>> " + newsListFromArray.get(0).toString());
+                logger.info(news.getId().toString());
             }
 
             return newsListFromArray;
