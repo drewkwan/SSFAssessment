@@ -22,9 +22,8 @@ public class NewsService {
 
     private static final Logger logger = LoggerFactory.getLogger(NewsService.class);
     
-    
     //Task 1: write service that returns a list of news articles from the lates news articles endpoint
-    //bsed on the Json data it looks like the key value pair is data: [article]. get teh article first
+    //bsed on the Json data it looks like the key value pair is data: [{article}. {article}]. get teh article first
 
     //hard code the language first and return to param it later.
     public static final String NEWS_LS_URL = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
@@ -40,10 +39,12 @@ public class NewsService {
         //rest template takes the Json data
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> resp = template.getForEntity(newsListUrl, String.class);
-        ArrayList<Object> lsOfNewsArtcls = News.lsOfNews(resp.getBody());
-        return lsOfNewsArtcls;
+        ArrayList<Object> lsOfNews = News.lsOfNews(resp.getBody());
+        return lsOfNews;
 
 
     }
+
+    
     
 }

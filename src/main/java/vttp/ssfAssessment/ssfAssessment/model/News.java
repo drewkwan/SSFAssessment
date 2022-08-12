@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,12 +16,13 @@ import jakarta.json.Json;
 import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
 
 public class News {
     //needs a save method later
     private static final Logger logger = LoggerFactory.getLogger(News.class);
     //private String lang = "EN";
-    private String id;
+    private int id;
     private String publishDate;
     private String url;
     private String imageurl;
@@ -30,10 +32,10 @@ public class News {
 
 
     
-    public String getId() {
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getPublishDate() {
@@ -73,6 +75,7 @@ public class News {
         this.categories = categories;
     }
 
+
     public static ArrayList<Object> lsOfNews(String json)  {
         //logger.info("news create Json " + json); -> receives json file correctly
         InputStream is = new ByteArrayInputStream(json.getBytes());
@@ -89,6 +92,7 @@ public class News {
             logger.info("@#$!!!!!");
             logger.info("first element !!!!!>> " +data.getJsonObject(0) );
 
+            
 
              ArrayList<Object> newsList = new ArrayList();
              if(data!= null) {
@@ -100,7 +104,8 @@ public class News {
 
             return newsList;
         }
-    
+
+        //
 
     }
 
