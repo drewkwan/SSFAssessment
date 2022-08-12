@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Crypto News of the Day</h1>
-    <li >Article </li>
-
-    
+    <ul th:each="news : ${newsList}">
+    <li th:value = "${news.id}"></li>
+    </ul>
 </body>
 </html>

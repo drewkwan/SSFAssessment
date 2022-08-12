@@ -29,9 +29,16 @@ public class News {
     private String body;
     private String tags;
     private String categories;
+    private String title;
 
 
     
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
     public String getId() {
         return id;
     }
@@ -85,7 +92,7 @@ public class News {
             // logger.info("VALUES >>>>>>>>> " + newsJO.values());
             //try json array instead
             
-            //nice the below gets me the full json array instead of  the []
+            //the below gets me the full json array instead of  the []
             JsonArray data = newsJO.getJsonArray("Data");
             logger.info("Json array >>>>>>> " + data);
             logger.info("");
@@ -105,7 +112,7 @@ public class News {
             return newsListFromArray;
         }
 
-        //
+        //the logger is showing me like a full class                            
 
     }
 

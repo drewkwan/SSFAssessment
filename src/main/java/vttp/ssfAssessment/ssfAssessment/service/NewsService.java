@@ -27,6 +27,7 @@ public class NewsService {
 
     //hard code the language first and return to param it later.
     public static final String NEWS_LS_URL = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
+    //String apiKey = System.getenv("CRYPTOCOMPARE_API");
 
     
     public ArrayList<News> getArticles() {

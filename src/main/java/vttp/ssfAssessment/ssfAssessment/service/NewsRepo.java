@@ -6,7 +6,7 @@ public interface NewsRepo {
 
     public void saveArticles(final News news);
 
-    public News findById(final Integer newsId);
+    public News findById(final String newsId);
 
     
 }

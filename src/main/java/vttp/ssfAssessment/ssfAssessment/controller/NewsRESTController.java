@@ -25,7 +25,7 @@ public class NewsRESTController {
     @GetMapping(path ="/{newsId}")
     public ResponseEntity<News> getNewsById(@PathVariable String newsId) {
         News n = service.findById(newsId);
-        return ResponseEntity.ok(m);
+        return ResponseEntity.ok(n);
     }
 
     

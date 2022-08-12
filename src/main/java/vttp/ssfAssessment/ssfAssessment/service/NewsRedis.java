@@ -27,7 +27,7 @@ public class NewsRedis implements NewsRepo {
     @Override
     public News findById(String newsId) {
         logger.info("find news by Id" + newsId);
-        News result = (News) redisTemplate.opsforValue().get(newsId);
+        News result = (News) redisTemplate.opsForValue().get(newsId);
         return result;
     }
 
@@ -38,4 +38,3 @@ public class NewsRedis implements NewsRepo {
 
     
     
-}
